@@ -1,0 +1,10 @@
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\bin\Release\NTST.ScriptLinkService.Objects.dll
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\bin\Release\NTST.ScriptLinkService.Objects.pdb
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\bin\Release\NTST.ScriptLinkService.Objects.xml
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.vbproj.AssemblyReference.cache
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.Resources.resources
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.vbproj.GenerateResource.cache
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.vbproj.CoreCompileInputs.cache
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.dll
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.xml
+H:\projects\R69_Check\ScriptLinkStub\NTST.ScriptLinkService.Objects\obj\Release\NTST.ScriptLinkService.Objects.pdb
