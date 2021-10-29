@@ -94,12 +94,89 @@ namespace ScriptLinkStub
 
         }
 
+        private static OptionObject2015 CopyObject(OptionObject2015 inputObject)
+        {
+            OptionObject2015 returnObject = new OptionObject2015();
+            returnObject.OptionId = inputObject.OptionId;
+            returnObject.Facility = inputObject.Facility;
+            returnObject.SystemCode = inputObject.SystemCode;
+            returnObject.NamespaceName = inputObject.NamespaceName;
+            returnObject.ParentNamespace = inputObject.ParentNamespace;
+            returnObject.ServerName = inputObject.ServerName;
+            return returnObject;
+        }
 
         [WebMethod]
         public OptionObject2015 RunScript(OptionObject2015 inputObject, String scriptParameter)
         {
-            OptionObject2015 returnObject = new OptionObject2015();
+            log.Debug("-----------------------------------------");
+            log.Debug("SDJL - BEGIN R69Check RunScript '" + scriptParameter + "'");
+
+            OptionObject2015 returnObject = CopyObject(inputObject);
+            R69CheckConfig config = R69CheckConfig.getInstance();
+
+            string typeOfService = null; // "Type of Service" on the form is the CPT code
+            string primaryDiagnoisis = null;
+            string secondaryDiagnosis = null;
+
+            try
+            {
+                log.Debug("SDJL OutpatientProgressNote scriptParameter: '" + scriptParameter + "' - 2 SDJL");
+                switch (scriptParameter)
+                {
+                    case "HS_OutpatientProgressnote R69Check":
+                        log.Debug("Check R69 Diagnosis Allowed/Not Allowed");
+                        foreach (FormObject form in inputObject.Forms)
+                        {
+                            log.Debug("Form ID: " + form.FormId);
+                            foreach (FieldObject field in form.CurrentRow.Fields)
+                            {
+                                log.Debug("SDJL FieldNumber '" + field.FieldNumber + "'");
+                                log.Debug("SDJL FieldValue '" + field.FieldValue + "'");
+                                switch (field.FieldNumber)
+                                {
+                                    case "51001": // On form - CMB51001 = "Type of Service"
+                                        log.Debug("51001 Field Value = '" + field.FieldValue + "'");
+                                        if (field.FieldValue.Length > 0)
+                                        {
+                                            log.Debug("Type Of Service (CPT Code) = '" + field.FieldValue);
+                                            typeOfService = field.FieldValue;
+                                        }
+                                        break;
+
+                                    case "10034": // On form - CMB10034 = "Primary Diagnosis"
+                                        log.Debug("10034 Field Value = '" + field.FieldValue + "'");
+                                        if (field.FieldValue.Length > 0)
+                                        {
+                                            log.Debug("Type Of Service (CPT Code) = '" + field.FieldValue);
+                                            primaryDiagnoisis = field.FieldValue;
+                                        }
+                                        break;
+
+                                    case "10035": // On form - CMB10035 = "Secondary Diagnosis"
+                                        log.Debug("10035 Field Value = '" + field.FieldValue + "'");
+                                        if (field.FieldValue.Length > 0)
+                                        {
+                                            log.Debug("Type Of Service (CPT Code) = '" + field.FieldValue);
+                                            secondaryDiagnosis = field.FieldValue;
+                                        }
+                                        break;
+                                }
+                            }
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                log.Debug(e.Message);
+            }
             //Add your script call(s) here
+            log.Debug("SDJL - END R69Check RunScript '" + scriptParameter + "'");
+            log.Debug("-----------------------------------------");
             return returnObject;
         }
     }
